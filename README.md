@@ -45,7 +45,7 @@ modeli – entiteti (Student, Profesor, Predmet, Korisnik).
 <h3>Baza podataka</h3>
 
 <h5>Tabele</h5>
-<br>
+
 Student – id, ime, prezime, indeks
 <br>
 Profesor – id, ime, prezime
@@ -57,7 +57,7 @@ Korisnik – id, username, password, role
 Student_Predmet – spojna tabela za ManyToMany vezu
 <br>
 <h5>Relacije</h5>
-<br>
+
 Profesor – Predmet: OneToMany
 <br>
 Student – Predmet: ManyToMany preko spojne tabele
