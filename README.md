@@ -94,8 +94,8 @@ Zaštita od session hijacking‑a (sessionFixation().migrateSession()).
 
 <h3>Frontend</h3>
 
-Thymeleaf stranice:
-<br>
+<h5>Thymeleaf stranice:</h5>
+
 index.html – početna stranica sa navigacijom.
 <br>
 students.html, profesors.html, predmeti.html – liste sa CRUD dugmadima.
@@ -104,8 +104,8 @@ student-form.html, profesor-form.html, predmet-form.html – forme za unos/izmen
 <br>
 login.html – login forma.
 <br>
-Role‑based prikaz:
-<br>
+ <h5>Role‑based prikaz:</h5>
+
 Dugmad za CRUD sakrivena studentima (sec:authorize="hasRole('PROFESOR')").
 <br>
 Student vidi samo listu predmeta.
