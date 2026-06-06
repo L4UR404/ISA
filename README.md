@@ -43,7 +43,7 @@ modeli – entiteti (Student, Profesor, Predmet, Korisnik).
 
 
 <h3>Baza podataka</h3>
-<br>
+
 <h5>Tabele</h5>
 <br>
 Student – id, ime, prezime, indeks
