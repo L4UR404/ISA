@@ -23,7 +23,7 @@ https://laura-jankovic-2004-9401302.postman.co/workspace/Laura-Jankovic's-Worksp
 
 
 <h3>Arhitektura</h3>
-<br>
+
 Backend: Spring Boot + Spring MVC + Spring Security.
 <br>
 Frontend: Thymeleaf + CSS.
@@ -67,7 +67,7 @@ Korisnik – Role: definisano u polju role
 
 
 <h3>Funkcionalnosti</h3>
-<br>
+
 -CRUD operacije za entitete.
 <br>
 -Autentifikacija i autorizacija:
@@ -93,7 +93,7 @@ Zaštita od session hijacking‑a (sessionFixation().migrateSession()).
 
 
 <h3>Frontend</h3>
-<br>
+
 Thymeleaf stranice:
 <br>
 index.html – početna stranica sa navigacijom.
