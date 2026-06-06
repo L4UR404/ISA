@@ -34,7 +34,7 @@ Paketi:
 <br>
 controller – kontroleri za CRUD operacije.
 <br>
-service – .
+service – Spring Security.
 <br>
 repository – JPA repozitorijumi.
 <br>
