@@ -8,20 +8,104 @@ Ispitni projekat.
 <br>
 Projekat je realizovan kao Spring MVC web aplikacija sa MySQL bazom podataka.
 <br>
-Cilj je implementacija CRUD operacija nad entitetima: Student, Profesor, Predmet, Korisnik, Student_Predmet.
+Cilj je implementacija CRUD operacija nad entitetima: Student, Profesor, Predmet 
 <br>
-Aplikacija obezbeđuje autentifikaciju i autorizaciju preko rola (STUDENT, PROFESOR) i sesija.
+Aplikacija obezbeđuje autentifikaciju i autorizaciju preko rola (STUDENT, PROFESOR) i upravljanjem sesijama.
 <br>
 Frontend je realizovan pomoću Thymeleaf šablona i CSS‑a za stilizaciju.
 <br>
+
+
 <h2>Link za postman:</h2>
 <br>
 https://laura-jankovic-2004-9401302.postman.co/workspace/Laura-Jankovic's-Workspace~6be2adf5-2fba-4c8b-8110-15f725ffc0f9/collection/55495092-3d36f8c2-6e6d-4367-a929-72603ad3a22b?action=share&creator=55495092
 <br>
+
+
 <h3>Arhitektura</h3>
 <br>
+Backend: Spring Boot + Spring MVC + Spring Security.
+<br>
+Frontend: Thymeleaf + CSS.
+<br>
+Baza podataka: MySQL sa 5 tabela.
+<br>
+Paketi:
+<br>
+controller – kontroleri za CRUD operacije.
+<br>
+service – .
+<br>
+repository – JPA repozitorijumi.
+<br>
+modeli – entiteti (Student, Profesor, Predmet, Korisnik).
+<br>
+
+
 <h3>Baza podataka</h3>
 <br>
+<h5>Tabele</h5>
+<br>
+Student – id, ime, prezime, indeks
+<br>
+Profesor – id, ime, prezime
+<br>
+Predmet – id, naziv, opis, profesor_id
+<br>
+Korisnik – id, username, password, role
+<br>
+Student_Predmet – spojna tabela za ManyToMany vezu
+<br>
+<h5>Relacije</h5>
+<br>
+Profesor – Predmet: OneToMany
+<br>
+Student – Predmet: ManyToMany preko spojne tabele
+<br>
+Korisnik – Role: definisano u polju role
+<br>
+
+
 <h3>Funkcionalnosti</h3>
 <br>
+-CRUD operacije za entitete.
+<br>
+-Autentifikacija i autorizacija:
+<br>
+Login forma (/login).
+<br>
+Role STUDENT i PROFESOR.
+<br>
+-STUDENT: može da vidi listu predmeta i studenata.
+<br>
+-PROFESOR: može da menja predmete, dodaje studente, briše i menja podatke.
+<br>
+-Upravljanje sesijama:
+<br>
+Samo jedna sesija po korisniku (maximumSessions(1)).
+<br>
+Logout briše sesiju i cookie (invalidateHttpSession(true), deleteCookies("JSESSIONID")).
+<br>
+Timeout sesije: 60 minuta neaktivnosti (server.servlet.session.timeout=60m).
+<br>
+Zaštita od session hijacking‑a (sessionFixation().migrateSession()).
+<br>
+
+
 <h3>Frontend</h3>
+<br>
+Thymeleaf stranice:
+<br>
+index.html – početna stranica sa navigacijom.
+<br>
+students.html, profesors.html, predmeti.html – liste sa CRUD dugmadima.
+<br>
+student-form.html, profesor-form.html, predmet-form.html – forme za unos/izmenu.
+<br>
+login.html – login forma.
+<br>
+Role‑based prikaz:
+<br>
+Dugmad za CRUD sakrivena studentima (sec:authorize="hasRole('PROFESOR')").
+<br>
+Student vidi samo listu predmeta.
