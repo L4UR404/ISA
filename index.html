@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <title>Početna stranica</title>
+
+</head>
+<body>
+<nav>
+    <a th:href="@{/}"><button>Početna</button></a>
+    <a th:href="@{/students}"><button>Studenti</button></a>
+    <a th:href="@{/profesors}"><button>Profesori</button></a>
+    <a th:href="@{/predmeti}"><button>Predmeti</button></a>
+    <a href="#" onclick="document.getElementById('logoutForm').submit()"><button>Odjavi se</button></a>
+
+    <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none"></form>
+</nav>
+<h1>Dobrodošli u Studentsku aplikaciju</h1>
+
+
+
+<div class="cards">
+    <div class="card">
+        <h3> Obaveštenje o ispitima</h3>
+        <p>
+            Prijava ispita u junskom roku traje do 15. juna.
+            Svi studenti su u obavezi da prijavu izvrše putem aplikacije, kako bi se obezbedila tačna evidencija i raspored polaganja.
+            Nakon isteka roka prijave neće biti moguće, pa vas molimo da obratite pažnju na datume i izvršite prijavu na vreme.
+        </p>
+        <p>
+            Ispiti će se održavati od 20. juna do 5. jula, prema rasporedu koji će biti objavljen u aplikaciji.
+            Studenti su dužni da provere tačne termine i učionice, kao i da ponesu indeks i važeću ličnu kartu na dan ispita.
+        </p>
+    </div>
+<div class="card">
+    <h3> Važni datumi</h3>
+    <p>
+        Početak letnjeg semestra zakazan je za 20. februar, dok se završetak semestra očekuje 10. juna.
+        Tokom semestra biće organizovane konsultacije sa profesorima, radionice i dodatna predavanja kako bi se studentima pružila dodatna podrška u učenju.
+    </p>
+    <p>
+        Posebno obratite pažnju na rokove za prijavu ispita i predaju seminarskih radova.
+        Sve informacije o rokovima biće redovno ažurirane u aplikaciji, pa se preporučuje da je koristite svakodnevno.
+    </p>
+</div>
+
+<div class="card">
+    <h3>ℹ Informacije za studente</h3>
+    <p>
+        Studentska služba stoji na raspolaganju za sva pitanja u vezi sa aplikacijom, prijavom ispita i evidencijom predmeta.
+        Ukoliko naiđete na tehničke poteškoće, obavezno se obratite službi najkasnije nekoliko dana pre isteka roka, kako bi se problem rešio na vreme.
+    </p>
+    <p>
+        Naš cilj je da obezbedimo fer i transparentan proces polaganja ispita, uz maksimalnu podršku studentima i profesorima.
+        Aplikacija je kreirana da vam olakša svakodnevne obaveze i pruži brzi pristup svim važnim informacijama na jednom mestu.
+    </p>
+</div>
+</div>
+
+</body>
+</html>

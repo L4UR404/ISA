@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Lista predmeta</title>
+    <br>
+
+
+</head>
+<body>
+<nav>
+    <a th:href="@{/}"><button>Početna</button></a>
+    <a th:href="@{/students}"><button>Studenti</button></a>
+    <a th:href="@{/profesors}"><button>Profesori</button></a>
+    <a th:href="@{/predmeti}"><button>Predmeti</button></a>
+    <a href="#" onclick="document.getElementById('logoutForm').submit()"><button>Odjavi se</button></a>
+
+    <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none"></form>
+</nav>
+<h2>Predmeti</h2>
+<div sec:authorize="hasRole('PROFESOR')">
+<a th:href="@{/predmeti/new}">Dodaj novi predmet</a>
+</div>
+<table >
+    <tr>
+        <th>ID</th><th>Naziv</th><th>Opis</th><th>Profesor</th><th>Akcija</th>
+    </tr>
+    <tr th:each="predmet : ${predmeti}">
+        <td th:text="${predmet.id}"></td>
+        <td th:text="${predmet.naziv}"></td>
+        <td th:text="${predmet.opis}"></td>
+        <td>
+            <span th:if="${predmet.profesor != null}" th:text="${predmet.profesor.ime}"></span>
+            <span th:unless="${predmet.profesor != null}">Nema profesora</span>
+        </td>
+
+        <div sec:authorize="hasRole('PROFESOR')">
+        <td>
+            <a th:href="@{/predmeti/edit/{id}(id=${predmet.id})}">Izmeni</a> |
+            <a href="#" onclick="if(confirm('Da li ste sigurni da želite da obrišete ovaj predmet?')) { document.getElementById('deleteForm-' + [[${predmet.id}]]).submit(); }">
+                Obriši
+            </a>
+
+            <form id="deleteForm-[[${predmet.id}]]"
+                  th:action="@{/predmeti/delete/{id}(id=${predmet.id})}"
+                  th:method="delete"
+                  style="display:none">
+            </form>
+
+        </td>
+        </div>
+    </tr>
+</table>
+</body>
+</html>

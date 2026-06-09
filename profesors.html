@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Lista profesora</title>
+    <br>
+
+</head>
+<body>
+<nav>
+    <a th:href="@{/}"><button>Početna</button></a>
+    <a th:href="@{/students}"><button>Studenti</button></a>
+    <a th:href="@{/profesors}"><button>Profesori</button></a>
+    <a th:href="@{/predmeti}"><button>Predmeti</button></a>
+    <a href="#" onclick="document.getElementById('logoutForm').submit()"><button>Odjavi se</button></a>
+
+    <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none"></form>
+</nav>
+<h2>Profesori</h2>
+<a th:href="@{/profesors/new}">Dodaj novog profesora</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Predmet</th>
+        <th>Akcija</th>
+    </tr>
+    <tr th:if="${#lists.isEmpty(profesors)}">
+        <td colspan="4">Nema profesora u bazi</td>
+    </tr>
+
+    <tr th:each="profesor : ${profesors}">
+        <td th:text="${profesor.id}"></td>
+        <td th:text="${profesor.ime}"></td>
+        <td th:text="${profesor.prezime}"></td>
+        <td>
+            <ul>
+                <li th:each="p : ${profesor.predmeti}" th:text="${p.naziv}"></li>
+            </ul>
+        </td>
+        <td>
+            <a th:href="@{/profesors/edit/{id}(id=${profesor.id})}">Izmeni</a> |
+            <a href="#" onclick="if(confirm('Da li ste sigurni da želite da obrišete ovog profesora/ku?')) { document.getElementById('deleteForm-' + [[${profesor.id}]]).submit(); }">
+                Obriši
+            </a>
+
+            <form id="deleteForm-[[${profesor.id}]]"
+                  th:action="@{/profesors/delete/{id}(id=${profesor.id})}"
+                  th:method="delete"
+                  style="display:none">
+            </form>
+
+        </td>
+
+    </tr>
+</table>
+</body>
+</html>

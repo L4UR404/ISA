@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Novi student</title>
+</head>
+<body>
+<h2>Dodaj studenta</h2>
+<form th:action="@{/students}" th:object="${student}" method="post">
+    Ime: <input type="text" th:field="*{ime}" /><br/>
+    Prezime: <input type="text" th:field="*{prezime}" /><br/>
+    Indeks: <input type="text" th:field="*{indeks}" /><br/>
+
+    <label>Predmeti:</label><br/>
+    <select multiple="multiple" th:field="*{predmeti}">
+        <option th:each="predmet : ${predmeti}"
+                th:value="${predmet.id}"
+                th:text="${predmet.naziv}">
+        </option>
+    </select><br/>
+
+    <button type="submit">Sačuvaj</button>
+</form>
+
+<p><a th:href="@{/students}">Nazad na listu</a></p>
+</body>
+</html>

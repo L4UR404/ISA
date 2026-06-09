@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+
+    <title>profesor-form</title>
+    <br>
+    <a th:href="@{/}"><button>Početna strana</button></a>
+</head>
+<body>
+<form th:action="@{/profesors}" th:object="${profesor}" method="post">
+    <label for="ime">Ime:</label>
+    <input type="text" id="ime" th:field="*{ime}" />
+
+    <label for="prezime">Prezime:</label>
+    <input type="text" id="prezime" th:field="*{prezime}" />
+
+    <label for="nazivPredmeta">Naziv predmeta:</label>
+    <input type="text" id="nazivPredmeta" name="nazivPredmeta" />
+
+
+    <button type="submit">Sačuvaj</button>
+</form>
+</body>
+</html>

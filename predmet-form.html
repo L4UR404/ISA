@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/style.css">
+
+    <title>predmet-form</title>
+</head>
+<body>
+<form th:action="@{/predmeti}" th:object="${predmet}" method="post">
+    <label for="naziv">Naziv:</label>
+    <input type="text" id="naziv" th:field="*{naziv}" />
+
+    <label for="opis">Opis:</label>
+    <input type="text" id="opis" th:field="*{opis}" />
+
+    <label for="profesor">Profesor:</label>
+    <select id="profesor" name="profesorId">
+        <option th:each="p : ${profesors}" th:value="${p.id}" th:text="${p.ime + ' ' + p.prezime}"></option>
+    </select>
+
+    <button type="submit">Sačuvaj</button>
+</form>
+</body>
+</html>

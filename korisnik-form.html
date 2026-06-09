@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+
+    <title>Registracija</title></head>
+<body>
+<h2>Novi korisnik</h2>
+<form th:action="@{/korisnici}" th:object="${korisnik}" method="post">
+    Username: <input type="text" th:field="*{username}" /><br/>
+    Password: <input type="password" th:field="*{password}" /><br/>
+    Role:
+    <select th:field="*{role}">
+        <option value="STUDENT">Student</option>
+        <option value="PROFESOR">Profesor</option>
+    </select><br/>
+    <button type="submit">Registruj se</button>
+</form>
+</body>
+</html>
